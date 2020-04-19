@@ -152,10 +152,14 @@
         <button class="changeButton">转换</button>
     </div>
     <div class="col" id="sout">
-        &lt;font face=&quot;Consolas&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+        <p>&lt;font face=&quot;Consolas&quot;&gt;&lt;br&gt;</p>
+
+        <p>[toc]</p>
+
+        &lt;br&gt;
         <br><br>
         <div id="outDiv" style="max-height: 400px;overflow-y: auto"></div>
-        <br><br>
+        <br>
         &lt;/font&gt;
     </div>
 </div>
@@ -254,7 +258,7 @@
                         ele.remove();
                         break;
                     }
-                    var t = "![" + ele.text() + "](" + ele.attr("href") + ")";
+                    var t = "[" + ele.text() + "](" + ele.attr("href") + "\t\"" + ele.text() + "\")";
                     ele.after(t);
                     ele.remove();
                     break;
@@ -274,7 +278,7 @@
                     }
                     // 移除ul标签
                     ele.find("ul").remove();
-                    var t = "<pre class='pass'>```java<br>" + ele.html() + "<br>```</pre>";
+                    var t = "<pre class='pass'>```java<br>" + ele.html() + "```</pre>";
                     ele.after(t + "<br><br>");
                     ele.remove();
                     break;
@@ -309,13 +313,16 @@
             console.log("这些tag的元素还没被处理:" + Array.from(new Set(_lastChild.map(e => e.tagName))));
             RecursiveGet();
         } else {
+            console.log("结束了");
             var _outDiv = $('#outDiv'),
                 _html = _outDiv.html();
             _outDiv.html(_html.replace(/\*{3,}/ig, '')
                 .replace(/(<br>\s*<br>)/ig, '<br><br>')
+                .replace(/<span.*复制代码.*<\/span>/ig, '')
                 .replace(/(<br>){3,}/ig, "<br><br>"));
             // 复制输出结果
             copyResult();
+
         }
     }
 
