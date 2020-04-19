@@ -255,7 +255,7 @@
                         break;
                     }
                     var t = "![" + ele.text() + "](" + ele.attr("href") + ")";
-                    ele.after(t + "<br><br>");
+                    ele.after(t);
                     ele.remove();
                     break;
                 case "img":
