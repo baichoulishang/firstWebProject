@@ -163,7 +163,6 @@
         &lt;/font&gt;
     </div>
 </div>
-
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
 <script>
     $(".changeButton").on('click', () => {
@@ -316,10 +315,15 @@
             console.log("结束了");
             var _outDiv = $('#outDiv'),
                 _html = _outDiv.html();
+            // 这一坨是为了整理格式的,不用改,放着就行了
             _outDiv.html(_html.replace(/\*{3,}/ig, '')
-                .replace(/(<br>\s*<br>)/ig, '<br><br>')
+                .replace(/<br>\s*<br>/ig, '<br><br>')
+                .replace(/((<br>)+\n){2,}/ig, '<br><br>')
                 .replace(/<span.*复制代码.*<\/span>/ig, '')
-                .replace(/(<br>){3,}/ig, "<br><br>"));
+                .replace(/(<br>){2,}/ig, "<br><br>")
+                .replace(/((<br>)+\n){2,}/ig, '<br><br>')
+                .replace(/((<br>)+\n){1,}(<br>)+/ig, '<br><br>')
+            );
             // 复制输出结果
             copyResult();
 
