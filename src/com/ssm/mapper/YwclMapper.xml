@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.YwclMapper">
+
+	<select id="getYwclList" parameterType="string" resultType="ywclCaseVO">
+		select RQ,
+       LDZL,
+       ZJRGL,
+       RGJTL,
+       RGJTL20,
+       RGJTL30,
+       RGJTL60,
+       ZJGDL,
+       ZJZRGL,
+       YWDFGDL,
+       YWDFZRGL,
+       YWWDFGDL,
+       YWWDFZRGL,
+       WWGDL,
+       WWZRGL,
+       YXTWZL,
+       WXTWZL,
+       DCTWL,
+       DFZS,
+       ZNDHLDZL
+  from ywcl_case
+		where ldzl &gt;= #{ldzl}
+	</select>
+
+
+	<cache/>
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.RoleMapper">
+
+    <!--打开useGeneratedKeys之后，系统会自动生成主键的-->
+    <insert id="insertRole" parameterType="role">
+		insert into role(id, rolename, note) values (#{id}, #{rolename}, #{note})
+	</insert>
+
+    <delete id="deleteRole" parameterType="role">
+		delete from role where id= #{id}
+	</delete>
+
+    <update id="updateRole" parameterType="role">
+		update role
+		<set>
+			<if test="rolename!=null and rolename!=''">
+				rolename = #{rolename},
+			</if>
+			<if test="note!=null and note!=''">
+				note = #{note},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+
+
+    <select id="getRole" resultType="role">
+		select id, rolename , note from role
+		<trim prefix="where" prefixOverrides="and">
+			<if test="role.id != null">
+				 and id=#{role.id}
+			</if>
+			<if test="role.rolename!=null">
+				and rolename like concat('%',#{role.rolename},'%')
+			</if>
+		</trim>
+	</select>
+
+
+	<resultMap id="roleResuleMap" type="role">
+		<!--这样配置之后，resultMap就能调用对应的构造方法-->
+		<constructor>
+			<idArg column="id" javaType="string"/>
+			<arg column="rolename" javaType="string"/>
+			<arg column="note" javaType="string"/>
+		</constructor>
+		<id property="id" column="id"/>
+		<result property="rolename" column="rolename"/>
+		<result property="note" column="note"/>
+	</resultMap>
+
+	<select id="getRoles" parameterType="string" resultMap="roleResuleMap">
+		select id,  rolename, note from role
+	</select>
+
+
+	<cache/>
+</mapper>

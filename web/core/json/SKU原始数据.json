@@ -1,0 +1,294 @@
+{
+  "comments:": [
+    "用这种数据结构来控制元素之间的交互mutual:",
+    "第一个数组:该元素控制交互的子元素以及由这些子元素控制交互的所有元素的合集.如果是空的,说明该元素是多选框,所有的子元素之间是共存的",
+    "第二个对象",
+    "    key:该元素的值.当我们触发该元素的交互事件时,如果元素值=key,那么该key对应的值内部的元素们都显示",
+    "    value:需要显示的元素们"
+  ],
+  "caseywlb": {
+    "0301": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": false
+      },
+      "caseldrdh": {
+        "required": false
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "caserdlx": {},
+      "caseywlx": {},
+      "caseywnr": {
+        "name": "反映内容"
+      },
+      "casedfnr": {},
+      "casebz": {},
+      "casedjclfs": {}
+    },
+    "0302": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": false
+      },
+      "caseldrdh": {
+        "required": false
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "caseywlxcx": {},
+      "caseywnr": {
+        "name": "查询内容"
+      },
+      "casebz": {}
+    },
+    "0303": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": true
+      },
+      "caseldrdh": {
+        "required": true
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "smjb": {},
+      "caseywlxts": {},
+      "casebjbbtsrxm": {
+        "name": "被投诉人单位或个人"
+      },
+      "caseywnr": {
+        "name": "反映内容"
+      },
+      "casebz": {},
+      "casesfbm": {}
+    },
+    "0304": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": false
+      },
+      "caseldrdh": {
+        "required": false
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "caseywlxwfwjjb": {},
+      "casebjbbtsrxm": {
+        "name": "被检举人姓名"
+      },
+      "casebjbbtsrdw": {
+        "name": "所属单位"
+      },
+      "caseywnr": {
+        "name": "反映内容"
+      },
+      "casedfnr": {},
+      "casebz": {},
+      "casedjclfs": {},
+      "casesfbm": {}
+    },
+    "0305": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": false
+      },
+      "caseldrdh": {
+        "required": false
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "caseywlxjb": {},
+      "casessjbejfl": {},
+      "casejjrsfyzjcl": {},
+      "caseywnr": {
+        "name": "举报内容"
+      },
+      "casebz": {}
+    },
+    "0306": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": false
+      },
+      "caseldrdh": {
+        "required": false
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "caseywlxjy": {},
+      "caseywnr": {
+        "name": "反映内容"
+      },
+      "casedfnr": {},
+      "casebz": {},
+      "casedjclfs": {}
+    },
+    "0307": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": false
+      },
+      "caseldrdh": {
+        "required": false
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "caseywlxyy": {},
+      "caseywnr": {
+        "name": "反映内容"
+      },
+      "casedfnr": {},
+      "casebz": {},
+      "casedjclfs": {}
+    },
+    "0308": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": false
+      },
+      "caseldrdh": {
+        "required": false
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "caseywnr": {
+        "name": "内容"
+      },
+      "casebz": {}
+    },
+    "0309": {
+      "casewtfsd1": {},
+      "casewtfsd2": {},
+      "casewtfsd3": {},
+      "casekhbh": {},
+      "caseldrxm": {
+        "required": false
+      },
+      "caseldrdh": {
+        "required": false
+      },
+      "caseczhm": {},
+      "caseldrdz": {},
+      "caseldrsfz": {},
+      "caseldrdw": {},
+      "caseldrdzyx": {},
+      "caseywnr": {
+        "name": "内容"
+      },
+      "casebz": {}
+    }
+  },
+  "caseywlxjb": {
+    "15": {
+      "casebjbbtsrxm": {},
+      "casebjbbtsrdw": {
+        "name": "被举报人住所"
+      }
+    },
+    "16": {
+      "bjblx": {},
+      "casesfsqxzfy": {},
+      "casesftqxzss": {},
+      "casesftcxfjb": {}
+    },
+    "30": {
+      "casebjbbtsrxm": {},
+      "casebjbbtsrdw": {
+        "name": "被举报人住所"
+      }
+    },
+    "": {
+      "casebjbbtsrxm": {},
+      "casebjbbtsrdw": {
+        "name": "被检举人住所"
+      }
+    }
+  },
+  "bjblx": {
+    "3501|3502": {
+      "casebjbbtsrxm": {},
+      "casebjbbtsrdw": {
+        "name": "被举报单位"
+      },
+      "casebjbrxzjb": {},
+      "casebjbrzw": {},
+      "casebjbjgxzjb": {},
+      "casebjbjgmc": {}
+    },
+    "3501": {
+      "casebjbbtsrxm": {},
+      "casebjbbtsrdw": {
+        "name": "被举报单位"
+      },
+      "casebjbrxzjb": {},
+      "casebjbrzw": {}
+    },
+    "3502": {
+      "casebjbjgxzjb": {},
+      "casebjbjgmc": {}
+    },
+    "": {}
+  },
+  "casesftcxfjb": {
+    "1": {
+      "casejbxhdwtc": {},
+      "casexfjbjyjg": {}
+    },
+    "0": {}
+  },
+  "casejjrsfyzjcl": {
+    "1": {
+      "casejjrsfyytgcl": {}
+    },
+    "0": {}
+  }
+}

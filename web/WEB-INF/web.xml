@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+    <!-- log4j配置文件地址 -->
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/log4j.properties</param-value>
+    </context-param>
+    <!-- spring配置文件地址 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+
+    <!-- Log4j的监听器要放在spring监听器前面 -->
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    <!-- spring的监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+
+    <!-- 配置DispatcherServlet -->
+    <servlet>
+        <!-- 注意：Spring MVC框架会根据servlet-name配置，找到/WEB-INF/dispatcher-servlet.xml作为配置文件载入Web工程中 -->
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 使得Dispatcher在服务器启动的时候就初始化 -->
+<!--        这些是为了上传而配置的,但是我们用了另一种上传的方式-->
+<!--        <load-on-startup>2</load-on-startup>-->
+<!--        <multipart-config>-->
+<!--            <location>E:/logs</location>-->
+<!--            <max-file-size>5242880</max-file-size>-->
+<!--            <max-request-size>10485760</max-request-size>-->
+<!--            <file-size-threshold>0</file-size-threshold>-->
+<!--        </multipart-config>-->
+    </servlet>
+    <!-- Servlet拦截配置。需要关联到servlet——>servlet-name -->
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+</web-app>

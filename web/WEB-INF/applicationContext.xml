@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/tx
+                http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+    <!--使用注解驱动Spring IoC-->
+    <context:annotation-config></context:annotation-config>
+    <!--把扫描到的资源Bean装载进Spring IoC-->
+    <context:component-scan base-package="com.ssm"/>
+
+    <bean id="role" class="com.ssm.pojo.Role">
+        <property name="id" value="20200302193130"/>
+        <property  name="rolename" value="白愁离殇"/>
+    </bean>
+
+    <!--配置数据源-->
+    <bean id="devDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value=" "/>
+        <property name="username" value="system"/>
+        <property name="password" value="88888888"/>
+<!--        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--        <property name="url" value="jdbc:mysql://localhost:3306/mysql?useSSL=false&amp;serverTimezone=GMT%2B8"/>-->
+<!--        <property name="username" value="root"/>-->
+<!--        <property name="password" value="88888888"/>-->
+    </bean>
+
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--配置数据源-->
+        <!--注入数据库连接池-->
+        <property name="dataSource" ref="devDataSource"/>
+        <!--引入MyBatis的配置文件-->
+        <property name="configLocation" value="WEB-INF/mybatis-config.xml"/>
+    </bean>
+
+
+    <!--配置数据源事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入数据库连接池-->
+        <property name="dataSource" ref="devDataSource"/>
+    </bean>
+
+    <!--注解驱动-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <!--采用自动扫描的方式创建mapper bean-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定扫描哪些包-->
+        <property name="basePackage" value="com.ssm"/>
+        <!--引用SqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--只有指定注解的mapper才会被扫描成Mapper-->
+        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+    </bean>
+
+
+
+
+</beans>

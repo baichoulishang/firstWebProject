@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入属性文件，用来配置数据库-->
+    <!--<properties resource="jdbc.properties"/>-->
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="true"/>
+        <!--下面这些配置能让mapper.xml文件运行时打印sql语句-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <!-- 别名 -->
+        <package name="com.ssm"/>
+    </typeAliases>
+    <!--mybatis-config.xml中自定义对象工厂|-->
+    <!--可以不写全类名-->
+    <objectFactory type="myObjectFactory">
+        <!--把参数传进自己的对象工厂中-->
+        <property name="prop" value="123456"></property>
+    </objectFactory>
+    <!-- 数据库环境 -->
+<!--    <environments default="development">-->
+<!--        <environment id="development">-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="POOLED">-->
+<!--                &lt;!&ndash;<property name="url" value="jdbc:mysql://localhost:3306/mysql?useSSL=false&amp;serverTimezone=GMT%2B8"/>&ndash;&gt;-->
+<!--                <property name="driver" value="${database.driver}"/>-->
+<!--                <property name="url" value="${database.url}"/>-->
+<!--                <property name="username" value="${database.username}"/>-->
+<!--                <property name="password" value="${database.password}"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+    <!-- 映射文件 -->
+    <mappers>
+        <mapper resource="com/ssm/mapper/RoleMapper.xml"/>
+        <mapper resource="com/ssm/mapper/YwclMapper.xml"/>
+    </mappers>
+</configuration>
