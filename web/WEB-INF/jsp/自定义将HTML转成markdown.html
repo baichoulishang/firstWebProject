@@ -148,7 +148,42 @@
 
 <div class="row">
     <div class="col">
-        <textarea cols="100" rows=10 id="input"></textarea>
+        <textarea cols="100" rows=10 id="input">
+            <ul>
+                <li>测试数据
+                    <ol>
+                        <li>测试数据</li>
+                        <li>测试数据
+                            <ol>
+                                <li>测试数据</li>
+                                <li>测试数据</li>
+                                <li>测试数据</li>
+                                <li>测试数据</li>
+                            </ol>
+                        </li>
+                        <li>测试数据</li>
+                        <li>测试数据</li>
+                        <li>测试数据
+                            <ul>
+                                <li>测试数据</li>
+                                <li>测试数据</li>
+                                <li>测试数据</li>
+                                <li>测试数据</li>
+                                <li>测试数据
+                                    <ol>
+                                        <li>测试数据</li>
+                                        <li>测试数据</li>
+                                        <li>测试数据</li>
+                                        <li>测试数据</li>
+                                        <li>测试数据</li>
+                                    </ol>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </textarea>
         <button class="changeButton">转换</button>
     </div>
     <div class="col" id="sout">
@@ -314,14 +349,21 @@
             var _outDiv = $('#outDiv'),
                 _html = _outDiv.html();
             // 这一坨是为了整理格式的,不用改,放着就行了
-            _outDiv.html(_html.replace(/\*{3,}/ig, '')
-                .replace(/<br>\s*<br>/ig, '<br><br>')
-                .replace(/((<br>)+\n){2,}/ig, '<br><br>')
-                .replace(/<span.*复制代码.*<\/span>/ig, '')
-                .replace(/(<br>){2,}/ig, "<br><br>")
-                .replace(/((<br>)+\n){2,}/ig, '<br><br>')
-                .replace(/((<br>)+\n){1,}(<br>)+/ig, '<br><br>')
+            _outDiv.html(_html.replace(/\*{3,}/ig, '')// 清理复杂的*号
+                .replace(/<span.*复制代码.*<\/span>/ig, '')// 清理"复制代码"语句
+                .replace(/<br>[(<br>)\s]*<br>/ig, '<br><br>')// 清理多而乱的<br>
             );
+            // _outDiv.html(_html.replace(/\*{3,}/ig, '')// 清理复杂的*号
+            //     .replace(/<span.*复制代码.*<\/span>/ig, '')// 清理"复制代码"语句
+            //     .replace(/<br>\s*<br>/ig, '<br><br>')
+            //     .replace(/((<br>)+\n){2,}/ig, '<br><br>')
+            //     .replace(/(<br>){2,}/ig, "<br><br>")
+            //     .replace(/((<br>)+\n){2,}/ig, '<br><br>')
+            //     .replace(/((<br>)+\n){1,}(<br>)+/ig, '<br><br>')
+            //     .replace(/(<br>)+\s*/ig, '<br><br>')
+            //     .replace(/(<br>){3,}/ig, '<br><br>')
+            // );
+            // _outDiv.html(_html);
             // 复制输出结果
             copyResult();
 
@@ -385,16 +427,44 @@
                 _ul.remove();
             });
         }
+        if (_li.find('ol').length) {
+            if (_li.find('ol').length) {
+                _li.find('ol').toArray().forEach(_ol => {
+                    _ol = $(_ol);
+                    _ol.children('li').toArray().forEach((_li2, index) => {
+                        _li2 = $(_li2);
+                        dealRecursiveLi_OL(_li2, blankNum + 3);
+                        _li2.after('<br>' + Array(blankNum + 1).join('&nbsp;') + (index + 1) + '.&nbsp;' + _li2.html() + "<br><br>");
+                        _li2.remove();
+                    });
+                    _ol.after(_ol.html() + "<br><br>");
+                    _ol.remove();
+                });
+            }
+        }
     }
 
     function dealRecursiveLi_OL(_li, blankNum) {
-        if (_li.find('ul').length) {
-            _li.find('ul').toArray().forEach(_ul => {
-                _ul = $(_ul);
-                _ul.children('li').toArray().forEach((_li2, index) => {
+        if (_li.find('ol').length) {
+            _li.find('ol').toArray().forEach(_ol => {
+                _ol = $(_ol);
+                _ol.children('li').toArray().forEach((_li2, index) => {
                     _li2 = $(_li2);
                     dealRecursiveLi_OL(_li2, blankNum + 3);
                     _li2.after('<br>' + Array(blankNum + 1).join('&nbsp;') + (index + 1) + '.&nbsp;' + _li2.html() + "<br><br>");
+                    _li2.remove();
+                });
+                _ol.after(_ol.html() + "<br><br>");
+                _ol.remove();
+            });
+        }
+        if (_li.find('ul').length) {
+            _li.find('ul').toArray().forEach(_ul => {
+                _ul = $(_ul);
+                _ul.children('li').toArray().forEach(_li2 => {
+                    _li2 = $(_li2);
+                    dealRecursiveLi_UL(_li2, blankNum + 3);
+                    _li2.after('<br>' + Array(blankNum + 1).join('&nbsp;') + '-&nbsp;' + _li2.html() + "<br><br>");
                     _li2.remove();
                 });
                 _ul.after(_ul.html() + "<br><br>");
