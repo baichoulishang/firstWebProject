@@ -148,42 +148,7 @@
 
 <div class="row">
     <div class="col">
-        <textarea cols="100" rows=10 id="input">
-            <ul>
-                <li>测试数据
-                    <ol>
-                        <li>测试数据</li>
-                        <li>测试数据
-                            <ol>
-                                <li>测试数据</li>
-                                <li>测试数据</li>
-                                <li>测试数据</li>
-                                <li>测试数据</li>
-                            </ol>
-                        </li>
-                        <li>测试数据</li>
-                        <li>测试数据</li>
-                        <li>测试数据
-                            <ul>
-                                <li>测试数据</li>
-                                <li>测试数据</li>
-                                <li>测试数据</li>
-                                <li>测试数据</li>
-                                <li>测试数据
-                                    <ol>
-                                        <li>测试数据</li>
-                                        <li>测试数据</li>
-                                        <li>测试数据</li>
-                                        <li>测试数据</li>
-                                        <li>测试数据</li>
-                                    </ol>
-                                </li>
-                            </ul>
-                        </li>
-                    </ol>
-                </li>
-            </ul>
-        </textarea>
+        <textarea cols="100" rows=10 id="input"></textarea>
         <button class="changeButton">转换</button>
     </div>
     <div class="col" id="sout">
@@ -258,7 +223,7 @@
                     break;
                 case "blockquote":
                     var t = ele.html();
-                    t = "<br><br>" + (t = (t = t.replace(/^\n+|\n+$/g, "")).replace(/^/gm, "> ")) + "<br><br>";
+                    t = "<br><br>" + (t = (t = t.replace(/^\n+|\n+$/g, "")).replace(/^/gm, "><br>> ")) + "<br><br>";
                     ele.after(t + "<br><br>");
                     ele.remove();
                     break;
@@ -350,8 +315,9 @@
                 _html = _outDiv.html();
             // 这一坨是为了整理格式的,不用改,放着就行了
             _outDiv.html(_html.replace(/\*{3,}/ig, '')// 清理复杂的*号
-                .replace(/<span.*复制代码.*<\/span>/ig, '')// 清理"复制代码"语句
+                .replace(/<span[^>]*>复制代码.*<\/span>/ig, '')// 清理"复制代码"语句
                 .replace(/<br>[(<br>)\s]*<br>/ig, '<br><br>')// 清理多而乱的<br>
+                .replace(/\s*<br>\s*<br>\s*[^\S]/ig, '<br><br>')// 两个<br>后面跟着换行符,或者一对莫名其妙的符号的情况
             );
             // _outDiv.html(_html.replace(/\*{3,}/ig, '')// 清理复杂的*号
             //     .replace(/<span.*复制代码.*<\/span>/ig, '')// 清理"复制代码"语句
