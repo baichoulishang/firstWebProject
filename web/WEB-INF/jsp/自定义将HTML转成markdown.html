@@ -294,6 +294,14 @@
                     break;
                 case "pass":
                     break;
+                case "font":
+                    if (ele.css('color')) {
+                        ele.after('&lt;font color=' + colorRGBtoHex(ele.css('color')) + '&gt;' + ele.html() + '&lt;/font&gt;');
+                    } else {
+                        ele.after(ele.html());
+                    }
+                    ele.remove();
+                    break;
                 default:
                     afterThenRemoveEle(ele)
                     break;
